@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice Binding / Changement âge avec secondes </title>
+    <!--Pratique par exemple pour changer l'apparence d'un mot-->
+
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+ <div id="app">
+    <p>Nom : <span v-text="personne.nom"></span></p>
+    <p>Prénom : <span v-text="personne.prenom"></span></p>
+    <p>Age : <span v-text="personne.age"></span></p>
+ </div>
+
+ <script>
+    app = Vue.createApp({
+     data() {
+        return {
+            personne : {
+                prenom : 'Julien',
+                nom: 'Claude',
+                age : 20
+            }
+        }
+     }
+    });
+    const vm = app.mount('#app'); 
+    setTimeout(()=> { //L'age va passer de 20 à 25 en trois secondes
+        vm.personne.age = 25;
+    }, 3000);
+ </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice Binding </title>
+
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+ <div id="app">
+    <p>Nom : <span v-text="personne.nom"></span></p>
+    <p>Prénom : <span v-text="personne.prenom"></span></p>
+    <p>Age : <span v-text="personne.age"></span></p>
+ </div>
+
+ <script>
+    app = Vue.createApp({
+     data() {
+        return {
+            personne : {
+                prenom : 'Julien',
+                nom: 'Claude',
+                age : 20
+            }
+        }
+     }
+    });
+    const vm = app.mount('#app'); // vm va nous permettre de modifier ces propriétés
+    vm.personne.prenom= 'Jessica'; 
+ </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raccourcis</title>
+
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <div id="app">
+        <div @keydown="actionParent">
+            <input type="text" @keydown.prevent.stop="action($event)">
+        </div>
+     </div>
+     <button @click.once="action">Cliquez ici</button> <!--On ne veut qu'un seul click-->
+     <input type="text" @keyup.code="action">
+
+     <script>
+        app = Vue.createApp({
+            methods: {
+                action(ev) {
+                    console.log('evènement traité dans le input');
+                   // ev.preventDefault(); // Le "@keydown.prevent.stop" ligne 15 permet de ne pas avoir à coder ces 2 lignes
+                   // ev.stopPropagation();
+                },
+                actionParent() {
+                    console.log('évènement traité dans le parent')
+                }
+            }
+        });
+        app.mount('#app');
+     </script>
+
+</body>
+</html>

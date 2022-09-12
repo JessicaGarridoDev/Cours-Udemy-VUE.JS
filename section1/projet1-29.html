@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arguments dynamiques /Augmenter la aille d'une image au clic/ double clic </title>
+
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+ <div id="app">
+    <input type="radio" v-model="choix" value="click" checked> <label >clic</label>
+    <input type="radio" v-model="choix" value="dblclick"> <label >Double clic</label>
+    <p>
+        <img src="images/petit-chat.jpg" :width="taille" @[choix]="modifierTaille">
+    </p>
+    
+ </div>
+
+ <script>
+    app = Vue.createApp({
+     data() {
+        return {
+            choix: 'click',
+            taille: 200
+        }
+     },
+        methods: {
+            modifierTaille() {
+                this.taille = this.taille * 1.1;
+            }
+        }
+    });
+    app.mount('#app');
+ </script>
+
+</body>
+</html>
